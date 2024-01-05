@@ -12,11 +12,11 @@ function App() {
 
 
   const fetchPokemon = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon/ditto")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
       .then((response) => {
         const result = response.data;
-        console.log(result.abilities);
-        setData(result.abilities)
+        console.log(result.results);
+        setData(result.results)
       },
         (error) => {
           console.log(error);
@@ -38,8 +38,8 @@ function App() {
         Edit <code>src/App.js</code> and save to reload.
       </p>
       <h1>PokeDex</h1>
-      {data.map((pokeObj) => {
-        return <p>  hp: {pokeObj.abilities}</p>
+      {data.map((pokeObj, index) => {
+        return <p> key={index} hp: {pokeObj.name}</p>
       })}
       <p>
         <li>
