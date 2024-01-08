@@ -23,7 +23,7 @@ function App() {
 
 
         console.log(pokemonDetails);
-        setData([pokemonDetails])
+        setData(pokemonDetails)
       },
         (error) => {
           console.log(error);
@@ -32,7 +32,7 @@ function App() {
   }
 
 
-
+  console.log("whats here?", data);
   useEffect(() => {
     fetchPokemon()
   }, [])
@@ -50,8 +50,7 @@ function App() {
       <h1>PokeDex</h1>
       {data.map((pokeObj, index) => {
 
-        return <p> key={index} hp: {pokeObj.name}   </p>
-
+        return <p> key = {index} hp: {pokeObj.name}  <img src={pokeObj.sprites.front_default} ></img>  </p>
 
 
       })}
