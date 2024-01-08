@@ -12,17 +12,26 @@ function App() {
 
 
   const fetchPokemon = () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon/12")
-      .then((response) => {
-        const result = response.data;
-        console.log(result);
-        setData([result])
+    axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20")
+      .then(async (response) => {
+        const result = response.data.results;
+
+        const pokemonDetails = await Promise.all(result.map(async (pokemon) => {
+          const pokeUrl = await axios.get(pokemon.url);
+          return pokeUrl.data
+        }))
+
+
+        console.log(pokemonDetails);
+        setData([pokemonDetails])
       },
         (error) => {
           console.log(error);
         }
       );
   }
+
+
 
   useEffect(() => {
     fetchPokemon()
@@ -41,7 +50,7 @@ function App() {
       <h1>PokeDex</h1>
       {data.map((pokeObj, index) => {
 
-        return <p> key={index} hp: {pokeObj.name} {pokeObj.sprites.front_default}   <img src= {pokeObj.sprites.front_default}   ></img> </p>
+        return <p> key={index} hp: {pokeObj.name}   </p>
 
 
 
