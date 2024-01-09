@@ -56,7 +56,7 @@ function App() {
       })}
       <p>
         <li>
-          Hp:
+          Hp: 20
         </li>
         <li>
           Attack:
