@@ -31,7 +31,7 @@ function App() {
       );
   }
 
- const handleSelectChange = (event) => {
+  const handleSelectChange = (event) => {
     setSelectedPokemon(event.target.value);
   };
 
@@ -54,14 +54,14 @@ function App() {
 
       <h1>PokeDex</h1>
 
-<select value={selectedPokemon} onChange={handleSelectChange} >
+      <select value={selectedPokemon} onChange={handleSelectChange} >
 
-      {data.map((pokeObj, index) => {
+        {data.map((pokeObj, index) => (
 
-        return <p> key = {index} {pokeObj.name} {pokeObj.weight} <img src={pokeObj.sprites.front_default} ></img>  </p>
+          <option key={index} value={pokeObj.name}>{pokeObj.name}</option>
 
 
-      })}
+        ))}
       </select>
       <p>
         <li>
