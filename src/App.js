@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 function App() {
 
   const [data, setData] = useState([]);
-
+  const [selectedPokemon, setSelectedPokemon] = useState('')
 
 
   const fetchPokemon = () => {
@@ -31,6 +31,11 @@ function App() {
       );
   }
 
+ const handleSelectChange = (event) => {
+    setSelectedPokemon(event.target.value);
+  };
+
+
 
   console.log("whats here?", data);
   useEffect(() => {
@@ -48,12 +53,16 @@ function App() {
       </p>
 
       <h1>PokeDex</h1>
+
+<select value={selectedPokemon} onChange={handleSelectChange} >
+
       {data.map((pokeObj, index) => {
 
-        return <p> key = {index} hp: {pokeObj.name}  <img src={pokeObj.sprites.front_default} ></img>  </p>
+        return <p> key = {index} {pokeObj.name} {pokeObj.weight} <img src={pokeObj.sprites.front_default} ></img>  </p>
 
 
       })}
+      </select>
       <p>
         <li>
           Hp: 20
