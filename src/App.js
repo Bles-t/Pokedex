@@ -68,7 +68,12 @@ function App() {
             <img src={selectedPokemonObject.sprites.other.showdown.front_default
             } alt={`${selectedPokemonObject.name} sprite`} />
             <p>Name: {selectedPokemonObject.name}</p>
-            <p>Order: {selectedPokemonObject.order}</p>
+            <p>Hp:{selectedPokemonObject.stats[0].base_stat}</p>
+            <p>Attack:{selectedPokemonObject.stats[1].base_stat}</p>
+            <p>Defense:{selectedPokemonObject.stats[2].base_stat}</p>
+            <p>Special Attack:{selectedPokemonObject.stats[3].base_stat}</p>
+            <p>Special Defense:{selectedPokemonObject.stats[4].base_stat}</p>
+            <p>Speed:{selectedPokemonObject.stats[5].base_stat}</p>
 
 
 
