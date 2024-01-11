@@ -35,9 +35,14 @@ function App() {
     setSelectedPokemon(event.target.value);
   };
 
+  // i did this because the "selctedPokemon" varable didnt have accesss to the Data.map propeties i needed.
+
+  // so i created another Variable that uses find . If pokemon name matches the slected pokemon then its true and ill have accesss to the properties i need.
+  const selectedPokemonObject = data.find(pokemon => pokemon.name === selectedPokemon);
 
 
-  console.log("whats here?", data);
+
+  console.log("whats here?", selectedPokemon);
   useEffect(() => {
     fetchPokemon()
   }, [])
@@ -45,47 +50,33 @@ function App() {
 
   return (
     <div className="App">
-
-
-
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-
       <h1>PokeDex</h1>
 
-      <select value={selectedPokemon} onChange={handleSelectChange} >
 
-        {data.map((pokeObj, index) => (
+      <div>
+        <select value={selectedPokemon} onChange={handleSelectChange} >
 
-          <option key={index} value={pokeObj.name}>{pokeObj.name}</option>
+          {data.map((pokeObj, index) => (
+
+            <option key={index}> {pokeObj.name} </option>
 
 
-        ))}
-      </select>
-      <p>
-        <li>
-          Hp: 20
-        </li>
-        <li>
-          Attack:
-        </li>
-        <li>
-          Defense:
-        </li>
-        <li>
-          Speed:
-        </li>
-        <li>
-          Sp. Attack
-        </li>
-        <li>
-          Sp. Defense
-        </li>
-      </p>
+          ))}
+        </select>
+        {selectedPokemonObject && (
+          <div>
+            <img src={selectedPokemonObject.sprites.other.showdown.front_default
+            } alt={`${selectedPokemonObject.name} sprite`} />
+            <p>Name: {selectedPokemonObject.name}</p>
+            <p>Order: {selectedPokemonObject.order}</p>
 
+
+
+          </div>
+        )}
+
+      </div>
     </div>
   );
 }
-
 export default App;
