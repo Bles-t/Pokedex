@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import '@fontsource/inter';
+import { Select } from '@mui/joy';
+import Option from '@mui/joy/Option';
 
 
 
@@ -49,20 +52,25 @@ function App() {
 
 
   return (
+
+
     <div className="App">
       <h1>PokeDex</h1>
 
 
       <div>
-        <select value={selectedPokemon} onChange={handleSelectChange} >
+        <Select color="success"
+          placeholder="Choose A Pokemon"
+          size="lg"
+          variant="solid" value={selectedPokemon} onChange={handleSelectChange} >
 
           {data.map((pokeObj, index) => (
 
-            <option key={index}> {pokeObj.name} </option>
+            <Option key={index} value={selectedPokemon} > {pokeObj.name} </Option>
 
 
           ))}
-        </select>
+        </Select>
         {selectedPokemonObject && (
           <div>
             <img src={selectedPokemonObject.sprites.other.showdown.front_default
