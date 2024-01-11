@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '@fontsource/inter';
-import { Select } from '@mui/joy';
+import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
 
 
@@ -34,8 +34,8 @@ function App() {
       );
   }
 
-  const handleSelectChange = (event) => {
-    setSelectedPokemon(event.target.value);
+  const handleSelectChange = (value) => {
+    setSelectedPokemon(value);
   };
 
   // i did this because the "selctedPokemon" varable didnt have accesss to the Data.map propeties i needed.
@@ -62,11 +62,12 @@ function App() {
         <Select color="success"
           placeholder="Choose A Pokemon"
           size="lg"
-          variant="solid" value={selectedPokemon} onChange={handleSelectChange} >
+          variant="solid" value={selectedPokemon} onChange={(value) => handleSelectChange(value)}
+        >
 
           {data.map((pokeObj, index) => (
 
-            <Option key={index} value={selectedPokemon} > {pokeObj.name} </Option>
+            <Option key={index} value={pokeObj.name} > {pokeObj.name} </Option>
 
 
           ))}
