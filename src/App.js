@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '@fontsource/inter';
 import bootstrap from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -72,9 +73,9 @@ function App() {
         </select>
 
         {selectedPokemonObject && (
-          <div   class="card border-secondary mb-3"  style={{width: '18rem'}} >
+          <div className="card border-secondary mb-3" style={{ width: '18rem' }} >
             <img src={selectedPokemonObject.sprites.other.showdown.front_default
-            }       class="card-img-top"    alt={`${selectedPokemonObject.name} sprite`} />
+            } class="card-img-top" alt={`${selectedPokemonObject.name} sprite`} />
             <h5 class="card-title">Name: {selectedPokemonObject.name}</h5>
             <p>Hp:{selectedPokemonObject.stats[0].base_stat}</p>
             <p>Attack:{selectedPokemonObject.stats[1].base_stat}</p>
