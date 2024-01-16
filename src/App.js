@@ -3,9 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '@fontsource/inter';
-import { Select } from '@mui/joy';
-
-import Option from '@mui/joy/Option';
+import bootstrap from 'bootstrap';
 
 
 
@@ -59,8 +57,10 @@ function App() {
       <h1>PokeDex</h1>
 
 
+
+
       <div>
-        <select className="form-select form-select-lg mb-3" aria-label="Default select example"
+        <select class="form-select form-select-lg mb-3" aria-label="Default select example"
           value={selectedPokemon} onChange={handleSelectChange}>
 
           {data.map((pokeObj, index) => (
@@ -72,10 +72,10 @@ function App() {
         </select>
 
         {selectedPokemonObject && (
-          <div>
+          <div   class="card border-secondary mb-3"  style={{width: '18rem'}} >
             <img src={selectedPokemonObject.sprites.other.showdown.front_default
-            } alt={`${selectedPokemonObject.name} sprite`} />
-            <p>Name: {selectedPokemonObject.name}</p>
+            }       class="card-img-top"    alt={`${selectedPokemonObject.name} sprite`} />
+            <h5 class="card-title">Name: {selectedPokemonObject.name}</h5>
             <p>Hp:{selectedPokemonObject.stats[0].base_stat}</p>
             <p>Attack:{selectedPokemonObject.stats[1].base_stat}</p>
             <p>Defense:{selectedPokemonObject.stats[2].base_stat}</p>
@@ -87,6 +87,8 @@ function App() {
 
           </div>
         )}
+
+
 
       </div>
     </div>
