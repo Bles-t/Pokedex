@@ -8,10 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
 function App() {
 
   const [data, setData] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState('')
+
 
 
   const fetchPokemon = () => {
@@ -34,65 +35,58 @@ function App() {
       );
   }
 
-  const handleSelectChange = (event) => {
-    setSelectedPokemon(event.target.value);
-  };
 
-  // i did this because the "selctedPokemon" varable didnt have accesss to the Data.map propeties i needed.
-
-  // so i created another Variable that uses find . If pokemon name matches the slected pokemon then its true and ill have accesss to the properties i need.
-  const selectedPokemonObject = data.find(pokemon => pokemon.name === selectedPokemon);
-
-
-
-  console.log("whats here?", selectedPokemon);
+  console.log("whats here?", data);
   useEffect(() => {
     fetchPokemon()
   }, [])
 
 
   return (
-
-
     <div className="App">
+
+
+
+      <p>
+        Edit <code>src/App.js</code> and save to reload.
+      </p>
+
       <h1>PokeDex</h1>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+      {data.map((pokeObj, index) => {
 
+        return <div class="col-md-4">
+            <div class="card" style={{ width: '18rem' }}>
 
-
-
-      <div>
-        <select class="form-select form-select-lg mb-3" aria-label="Default select example"
-          value={selectedPokemon} onChange={handleSelectChange}>
-
-          {data.map((pokeObj, index) => (
-
-            <option value={pokeObj.name} key={index} > {pokeObj.name} </option>
-
-
-          ))}
-        </select>
-
-        {selectedPokemonObject && (
-          <div className="card border-secondary mb-3" style={{ width: '18rem' }} >
-            <img src={selectedPokemonObject.sprites.other.showdown.front_default
-            } class="card-img-top" alt={`${selectedPokemonObject.name} sprite`} />
-            <h5 class="card-title">Name: {selectedPokemonObject.name}</h5>
-            <p>Hp:{selectedPokemonObject.stats[0].base_stat}</p>
-            <p>Attack:{selectedPokemonObject.stats[1].base_stat}</p>
-            <p>Defense:{selectedPokemonObject.stats[2].base_stat}</p>
-            <p>Special Attack:{selectedPokemonObject.stats[3].base_stat}</p>
-            <p>Special Defense:{selectedPokemonObject.stats[4].base_stat}</p>
-            <p>Speed:{selectedPokemonObject.stats[5].base_stat}</p>
-
-
-
+              <p> key = {index} hp: {pokeObj.name}  <img  src={pokeObj.sprites.front_default} class="card-img-top"></img>  </p>
+            </div>
           </div>
-        )}
 
+      })}
+</div>
+      <p>
+        <li>
+          Hp: 20
+        </li>
+        <li>
+          Attack:
+        </li>
+        <li>
+          Defense:
+        </li>
+        <li>
+          Speed:
+        </li>
+        <li>
+          Sp. Attack
+        </li>
+        <li>
+          Sp. Defense
+        </li>
+      </p>
 
-
-      </div>
     </div>
   );
 }
+
 export default App;
