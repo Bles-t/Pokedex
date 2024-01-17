@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import '@fontsource/inter';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 
 
@@ -53,17 +54,23 @@ function App() {
 
       <h1>PokeDex</h1>
       <div class="row row-cols-1 row-cols-md-2 g-4">
-      {data.map((pokeObj, index) => {
+        {data.map((pokeObj, index) => {
 
-        return <div class="col-md-4">
+          return <div class="col-md-4">
             <div class="card" style={{ width: '18rem' }}>
 
-              <p> key = {index} hp: {pokeObj.name}  <img  src={pokeObj.sprites.front_default} class="card-img-top"></img>  </p>
+              <img src={pokeObj.sprites.front_default} class="card-img-top"></img>
+              <h5> {pokeObj.name} </h5>
+              <p> Type: {pokeObj.types.map((typeObj, typeIndex) => (
+                <span key={typeIndex}> {typeObj.type.name}</span>
+              ))}
+              </p>
+
             </div>
           </div>
 
-      })}
-</div>
+        })}
+      </div>
       <p>
         <li>
           Hp: 20
