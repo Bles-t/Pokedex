@@ -6,14 +6,13 @@ import '@fontsource/inter';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { type } from '@testing-library/user-event/dist/type';
-import Search from './searchBar';
-
+import './search.css'
 
 
 function App() {
 
   const [data, setData] = useState([]);
-
+  const [filterData, setFilterData] = useState([])
 
 
   const fetchPokemon = () => {
@@ -29,11 +28,17 @@ function App() {
 
         console.log(pokemonDetails);
         setData(pokemonDetails)
+        setFilterData(pokemonDetails)
       },
         (error) => {
           console.log(error);
         }
       );
+  }
+
+  const handleFilter = (value) => {
+    const res = filterData.filter(result => result.name.toLowerCase().includes(value))
+    setData(res);
   }
 
 
@@ -43,12 +48,16 @@ function App() {
   }, [])
 
 
+
+
   return (
     <div className="App">
 
-<div className='wrapper'>
-<Search>  </Search>
-</div>
+      <div className='wrapper'>
+        <div className="search">
+          <input type="text" placeholder="Search Here"  onChange={ e => handleFilter(e.target.value)}  />
+        </div>
+      </div>
 
       <p>
         Edit <code>src/App.js</code> and save to reload.
