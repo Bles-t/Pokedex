@@ -6,7 +6,7 @@ import '@fontsource/inter';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { type } from '@testing-library/user-event/dist/type';
-
+import Search from './searchBar';
 
 
 
@@ -46,21 +46,27 @@ function App() {
   return (
     <div className="App">
 
-
+<div className='wrapper'>
+<Search>  </Search>
+</div>
 
       <p>
         Edit <code>src/App.js</code> and save to reload.
       </p>
 
       <h1>PokeDex</h1>
+
+
+
       <div class="row row-cols-1 row-cols-md-2 g-4">
         {data.map((pokeObj, index) => {
 
-          return <div class="col-md-4">
+          return <div key={index} class="col-md-4">
             <div class="card" style={{ width: '18rem' }}>
 
               <img src={pokeObj.sprites.front_default} class="card-img-top"></img>
               <h5> {pokeObj.name} </h5>
+              {/* i addded this because not every pokemon has two types. so i need to intrate throguh the array and show what are all the types are. */}
               <p> Type: {pokeObj.types.map((typeObj, typeIndex) => (
                 <span key={typeIndex}> {typeObj.type.name}</span>
               ))}
@@ -71,26 +77,6 @@ function App() {
 
         })}
       </div>
-      <p>
-        <li>
-          Hp: 20
-        </li>
-        <li>
-          Attack:
-        </li>
-        <li>
-          Defense:
-        </li>
-        <li>
-          Speed:
-        </li>
-        <li>
-          Sp. Attack
-        </li>
-        <li>
-          Sp. Defense
-        </li>
-      </p>
 
     </div>
   );
