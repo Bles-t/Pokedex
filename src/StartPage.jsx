@@ -5,14 +5,13 @@ import '@fontsource/inter';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './search.css'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+import { useNavigate } from 'react-router-dom';
 
 function StartPage() {
 
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([])
-
+  const navigate = useNavigate();
 
   const fetchPokemon = () => {
     axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20")
@@ -25,7 +24,7 @@ function StartPage() {
         }))
 
 
-        console.log(pokemonDetails);
+        console.log("pass this?", pokemonDetails);
         setData(pokemonDetails)
         setFilterData(pokemonDetails)
       },
@@ -42,7 +41,7 @@ function StartPage() {
 
   const handleClick = () => {
 
-    history.push('/GameSetUp')
+    navigate('/PokemonPage', {data})
   }
 
 
@@ -59,7 +58,7 @@ function StartPage() {
 
       <div className='wrapper'>
         <div className="search">
-          <input type="text" placeholder="Search Here"  onChange={ e => handleFilter(e.target.value)}  />
+          <input type="text" placeholder="Search Here" onChange={e => handleFilter(e.target.value)} />
         </div>
       </div>
 
