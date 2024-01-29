@@ -41,7 +41,7 @@ function StartPage() {
 
   const handleClick = () => {
 
-    navigate('/PokemonPage', {data})
+    navigate('/PokemonPage', { data })
   }
 
 
