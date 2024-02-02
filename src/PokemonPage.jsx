@@ -1,11 +1,13 @@
 import React from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 
 function PokemonPage(props) {
 
   const location = useLocation();
 
-  console.log("whats this", location);
+  const {state} = location;
+
+  console.log("whats this poke", state);
   return (
     <div>
       <p>Name: </p>

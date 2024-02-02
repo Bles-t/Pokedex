@@ -6,7 +6,7 @@ import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './search.css'
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 function StartPage() {
 
@@ -42,7 +42,7 @@ function StartPage() {
 
   const handleClick = () => {
 
-    navigate('/PokemonPage', { state: { data } })
+    navigate('/PokemonPage', { state: [data] })
   }
 
 
@@ -83,7 +83,7 @@ function StartPage() {
                 <span key={typeIndex}> {typeObj.type.name}</span>
               ))}
               </p>
-              <a onClick={handleClick} href="#" class="btn btn-primary"> Select </a>            </div>
+              <a onClick={handleClick} href="#" className="btn btn-primary"> Select </a>            </div>
           </div>
 
         })}

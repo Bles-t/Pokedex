@@ -6,11 +6,8 @@ function App() {
     <Router>
       <div>
 
-        <Routes path="/StartPage">
+        <Routes>
           <Route path="/StartPage" element={<StartPage />} />
-        </Routes>
-
-        <Routes path="/PokemonPage">
           <Route path="/PokemonPage" element={<PokemonPage />} />
         </Routes>
 
