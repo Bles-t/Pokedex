@@ -5,12 +5,12 @@ function PokemonPage(props) {
 
   const location = useLocation();
 
-  const {state} = location;
+  const pokemon = location.state.pokemon;
 
-  console.log("whats this poke", state);
+  console.log("whats this poke", pokemon);
   return (
     <div>
-      <p>Name: </p>
+      <p>Name: {pokemon.name} </p>
       <p></p>
     </div>
   );

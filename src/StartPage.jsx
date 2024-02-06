@@ -40,10 +40,9 @@ function StartPage() {
     setData(res);
   }
 
-  const handleClick = () => {
-
-    navigate('/PokemonPage', { state: [data] })
-  }
+  const handleSelectPokemon = (pokeObj) => {
+    navigate('/PokemonPage', { state: { pokemon: pokeObj } });
+  };
 
 
   console.log("whats here?", data);
@@ -72,7 +71,7 @@ function StartPage() {
 
       <div class="row row-cols-1 row-cols-md-2 g-4">
         {data.map((pokeObj, index) => {
-
+ console.log("im here",pokeObj);
           return <div key={index} class="col-md-4">
             <div class="card" style={{ width: '18rem' }}>
 
@@ -83,9 +82,12 @@ function StartPage() {
                 <span key={typeIndex}> {typeObj.type.name}</span>
               ))}
               </p>
-              < Link to={{ pathname: "/PokemonPage", state: { pokeObj } }} href="#" className="btn btn-primary"> Select
-              </Link>
+              {/* < Link to={{ pathname: "/PokemonPage", state: { pokemon: pokeObj } }} href="#" className="btn btn-primary"> Select
+              </Link> */}
 
+<button onClick={() => handleSelectPokemon(pokeObj)} className="btn btn-primary">
+  Select
+</button>
 
             </div>
           </div>
