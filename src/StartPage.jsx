@@ -71,7 +71,6 @@ function StartPage() {
 
       <div class="row row-cols-1 row-cols-md-2 g-4">
         {data.map((pokeObj, index) => {
- console.log("im here",pokeObj);
           return <div key={index} class="col-md-4">
             <div class="card" style={{ width: '18rem' }}>
 
@@ -85,9 +84,9 @@ function StartPage() {
               {/* < Link to={{ pathname: "/PokemonPage", state: { pokemon: pokeObj } }} href="#" className="btn btn-primary"> Select
               </Link> */}
 
-<button onClick={() => handleSelectPokemon(pokeObj)} className="btn btn-primary">
-  Select
-</button>
+              <button onClick={() => handleSelectPokemon(pokeObj)} className="btn btn-primary">
+                Select
+              </button>
 
             </div>
           </div>
