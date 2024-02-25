@@ -4,11 +4,25 @@
 }
 
 
-.wrapper{
+@font-face {
+  font-family: myFont;
+  src: url(Pokemon Solid.ttf);
+}
+
+p {
+
+  font-family: myFont;
+font-size: 200%;}
+
+body{
+  background-color: black;
+}
+
+.wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: beige;
+  background-color: rgb(184, 184, 46);
 }
 
 .App-logo {
