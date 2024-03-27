@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import './PokemonPage.css'
-
+import image from './Photos/pokedex_blank.jpg'
 function PokemonPage(props) {
 
   const location = useLocation();
@@ -13,7 +13,7 @@ function PokemonPage(props) {
     <div>
 
       <img src={pokemon.sprites.other.dream_world.front_default} width={250} height={250} class="card-img-top"></img>
-
+      <img src={image}  ></img>
       <p>Name: {pokemon.name} </p>
       <div className="ordernumber">
         <p  >Order: {pokemon.order}</p>

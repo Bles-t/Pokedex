@@ -7,20 +7,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './search.css'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Redis from 'redis';
+
+
+const redisClient = Redis.createClient({ "url": false })
 
 function StartPage() {
 
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([])
   const navigate = useNavigate();
+  const DEFAULT_EXPIRATION = 3600
 
   const fetchPokemon = () => {
     axios.get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20")
       .then(async (response) => {
-        const result = response.data.results;
 
+        const result = response.data.results;
         const pokemonDetails = await Promise.all(result.map(async (pokemon) => {
           const pokeUrl = await axios.get(pokemon.url);
+          redisClient.setex('pokemon', DEFAULT_EXPIRATION, JSON.stringify(pokeUrl))
           return pokeUrl.data
         }))
 
